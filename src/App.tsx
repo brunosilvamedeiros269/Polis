@@ -214,8 +214,8 @@ function App() {
         }
         query = query.in('id', following);
       } else {
-        // Modo Explorar: Ordenação por Ranking obrigatória
-        query = query.order('ranking_score', { ascending: false, nullsFirst: false });
+        // Modo Explorar: Ordenação por Ranking, trazendo até quem não tem nota
+        query = query.order('ranking_score', { ascending: false, nullsFirst: true });
         
         if (searchQuery.trim().length > 0) {
           const term = `%${searchQuery.trim()}%`;
