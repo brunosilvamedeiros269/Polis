@@ -33,6 +33,9 @@ function App() {
   const [unreadCount, setUnreadCount] = useState<number>(0);
   const [radarDeputyIds, setRadarDeputyIds] = useState<number[]>([]);
   const [showNotifInbox, setShowNotifInbox] = useState(false);
+  const [page, setPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const PAGE_SIZE = 24;
 
   // Sync state changes back to sessionStorage
   useEffect(() => {
@@ -193,44 +196,58 @@ function App() {
     });
   };
 
-  // Motor de Busca
+  // Motor de Busca e Listagem por Ranking
   useEffect(() => {
     async function fetchDeputies() {
       setLoading(true);
-      let query = supabase.from('deputies').select('*');
+      const from = page * PAGE_SIZE;
+      const to = from + PAGE_SIZE - 1;
+      
+      let query = supabase.from('deputies').select('*', { count: 'exact' });
 
       if (feedMode === 'seguindo') {
         if (following.length === 0) {
           setDeputies([]);
           setLoading(false);
+          setHasMore(false);
           return;
         }
         query = query.in('id', following);
       } else {
-         // explorar mode
-         if (searchQuery.trim().length > 0) {
-            query = query.ilike('name', `%${searchQuery.trim()}%`);
-         }
-         query = query.limit(30);
+        // Modo Explorar: Ordenação por Ranking obrigatória
+        query = query.order('ranking_score', { ascending: false, nullsFirst: false });
+        
+        if (searchQuery.trim().length > 0) {
+          const term = `%${searchQuery.trim()}%`;
+          // Tenta buscar no nome parlamentar ou nome civil
+          query = query.or(`name.ilike.${term},nome_civil.ilike.${term}`);
+        }
       }
 
-      const { data } = await query;
+      const { data, count } = await query.range(from, to);
+      
       if (data) {
-        setDeputies(data);
-        sessionStorage.setItem('meuPolitico_deputies', JSON.stringify(data));
-      } else {
-        console.error("Erro ao buscar deputados");
+        if (page === 0) {
+          setDeputies(data);
+        } else {
+          setDeputies(prev => [...prev, ...data]);
+        }
+        setHasMore(count ? (from + data.length < count) : data.length === PAGE_SIZE);
       }
       setLoading(false);
     }
     
-    // Throttle digitacao
     const timeoutId = setTimeout(() => {
        fetchDeputies();
-    }, 500);
+    }, 400); // Throttle levemente menor para resposta mais rápida
     return () => clearTimeout(timeoutId);
 
-  }, [feedMode, following.length, searchQuery]);
+  }, [feedMode, following.length, searchQuery, page]);
+
+  // Reset de página quando o critério muda
+  useEffect(() => {
+    setPage(0);
+  }, [feedMode, searchQuery]);
 
   return (
     <>
@@ -380,11 +397,36 @@ function App() {
                       )}
                     </div>
                   </div>
-                  <h1 className="profile-name headline">{deputy.name}</h1>
-                  <p className="profile-subtitle">Partido {deputy.party} • {deputy.state}</p>
+
+                  <div style={{ textAlign: "center", marginBottom: "0.5rem" }}>
+                    <h1 className="profile-name headline" style={{ marginBottom: "0.25rem" }}>{deputy.name}</h1>
+                    <p className="profile-subtitle" style={{ margin: 0 }}>Partido {deputy.party} • {deputy.state}</p>
+                    {deputy.ranking_score !== null && (
+                      <div style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "0.4rem", backgroundColor: "var(--color-primary-container)", color: "white", padding: "0.4rem 0.8rem", borderRadius: "999px", fontSize: "0.75rem", fontWeight: 800 }}>
+                        <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>trophy</span>
+                        Nota Ranking: {deputy.ranking_score.toFixed(2)}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </section>
             )})}
+
+            {hasMore && !loading && deputies.length > 0 && (
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "1rem", marginBottom: "3rem" }}>
+                <button 
+                  onClick={() => setPage(prev => prev + 1)}
+                  style={{ backgroundColor: "var(--bg-surface-highest)", border: "1px solid var(--outline-variant)", color: "var(--color-primary-container)", padding: "1rem 2rem", borderRadius: "1rem", fontWeight: 800, cursor: "pointer", display: "flex", alignItems: "center", gap: "0.5rem" }}
+                >
+                  <span className="material-symbols-outlined">expand_more</span>
+                  Ver Mais Políticos
+                </button>
+              </div>
+            )}
+            
+            {loading && page > 0 && (
+                <p style={{ textAlign: "center", marginTop: "1rem", marginBottom: "3rem", fontSize: "0.875rem", fontWeight: 600 }}>Carregando próxima página...</p>
+            )}
 
           </main>
         </>
