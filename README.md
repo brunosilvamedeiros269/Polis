@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# 🏛️ Polis
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Polis** é uma plataforma de transparência e coerência ética projetada para aproximar cidadãos do legislativo brasileiro. O app utiliza inteligência artificial para monitorar as atividades de parlamentares, cruzando discursos e votações para garantir a integridade da representação política.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades Principais
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **🔔 Radar Ético**: Notificações em tempo real sobre incoerências detectadas pela IA.
+- **📊 Fidelidade Partidária**: Acompanhe o alinhamento de cada deputado com as diretrizes de seu partido.
+- **💰 Monitoramento de Gastos**: Visualização detalhada de despesas, categorizadas por mês e tipo.
+- **🗳️ Histórico Legislativo**: Votos nominais, projetos e emendas parlamentares em um só lugar.
+- **📈 Reputação e Ranking**: Integração com o Ranking dos Políticos para uma visão 360º da atuação pública.
 
-## React Compiler
+## 🛠️ Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core**: React 19 + TypeScript
+- **Build Tool**: Vite
+- **Backend/DB**: Supabase (Realtime, Auth, Postgres)
+- **AI/ML**: Google Gemini Pro (Análise de coerência e resumos legislativos)
+- **Styling**: Vanilla CSS (Design Premium & Glassmorphism)
+- **Mobile Prep**: Capacitor (Pronto para iOS/Android)
 
-## Expanding the ESLint configuration
+## 📡 Configuração de Ambiente
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Para rodar localmente, crie um arquivo `.env.local` na raiz:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_SUPABASE_URL=sua_url
+VITE_SUPABASE_ANON_KEY=sua_chave_publica
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛰️ Deploy
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+O projeto está configurado para deploy contínuo na **Vercel**. O arquivo `vercel.json` garante o roteamento correto para as páginas do perfil.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*Polis - A tecnologia a serviço da democracia.*
