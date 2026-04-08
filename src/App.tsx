@@ -8,6 +8,7 @@ import LoginScreen from './components/LoginScreen';
 import UserProfile from './components/UserProfile';
 import NotificationInbox from './components/NotificationInbox';
 import NotificationBell from './components/NotificationBell';
+import PoliticianCard from './components/PoliticianCard';
 import { App as CapApp } from '@capacitor/app';
 
 function App() {
@@ -358,59 +359,17 @@ function App() {
               <p style={{textAlign: "center", marginTop: "2rem"}}>Vazio. Nenhum político encontrado ou Nuvem inacessível!</p>
             )}
 
-            {/* Listagem Dinâmica e Botão SEGUIR */}
-            {!loading && deputies.map((deputy) => {
-              const isFollowing = following.includes(deputy.id);
-              return (
-              <section key={deputy.id} style={{ marginBottom: "2rem" }}>
-                <div 
-                  className="card profile-section" 
-                  style={{ position: "relative", cursor: "pointer", transition: "transform 0.2s" }} 
-                  onClick={() => setSelectedDeputyId(deputy.id)}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                >
-                   
-                  <button 
-                     onClick={(e) => { e.stopPropagation(); toggleFollow(deputy.id); }}
-                     style={{ position: "absolute", top: "1rem", right: "1rem", 
-                              background: isFollowing ? "var(--color-success-bg)" : "var(--bg-surface-high)", 
-                              color: isFollowing ? "var(--color-success-text)" : "var(--text-on-surface-variant)", 
-                              border: "none", padding: "0.5rem 1rem", borderRadius: "999px", fontWeight: 700, 
-                              fontSize: "0.625rem", textTransform: "uppercase", cursor: "pointer", display: "flex", gap: "0.25rem", alignItems: "center", zIndex: 10 }}>
-                      <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>{isFollowing ? "check" : "add"}</span>
-                      {isFollowing ? "Seguindo" : "Seguir"}
-                  </button>
-
-                  <div className="profile-image-container">
-                    <div className="profile-ring">
-                      <div className="profile-image-inner">
-                        <img 
-                          alt={deputy.name}
-                          src={deputy.avatar_url || "https://ui-avatars.com/api/?name=Avatar"} 
-                        />
-                      </div>
-                      {radarDeputyIds.includes(Number(deputy.id)) && (
-                        <div style={{ position: "absolute", top: "-5px", right: "-5px", background: "white", borderRadius: "50%", padding: "4px", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)", zIndex: 5 }}>
-                          <span className="material-symbols-outlined" style={{ fontSize: "20px", color: "#d32f2f", animation: "pulse 2s infinite" }}>notifications_active</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div style={{ textAlign: "center", marginBottom: "0.5rem" }}>
-                    <h1 className="profile-name headline" style={{ marginBottom: "0.25rem" }}>{deputy.name}</h1>
-                    <p className="profile-subtitle" style={{ margin: 0 }}>Partido {deputy.party} • {deputy.state}</p>
-                    {deputy.ranking_score !== null && (
-                      <div style={{ marginTop: "0.75rem", display: "inline-flex", alignItems: "center", gap: "0.4rem", backgroundColor: "var(--color-primary-container)", color: "white", padding: "0.4rem 0.8rem", borderRadius: "999px", fontSize: "0.75rem", fontWeight: 800 }}>
-                        <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>trophy</span>
-                        Nota Ranking: {deputy.ranking_score.toFixed(2)}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </section>
-            )})}
+            {/* Listagem Dinâmica com PoliticianCard */}
+            {!loading && deputies.map((deputy) => (
+              <PoliticianCard 
+                key={deputy.id}
+                deputy={deputy}
+                isFollowing={following.includes(deputy.id)}
+                isRadar={radarDeputyIds.includes(Number(deputy.id))}
+                onToggleFollow={toggleFollow}
+                onClick={setSelectedDeputyId}
+              />
+            ))}
 
             {hasMore && !loading && deputies.length > 0 && (
               <div style={{ display: "flex", justifyContent: "center", marginTop: "1rem", marginBottom: "3rem" }}>

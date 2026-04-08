@@ -18,10 +18,11 @@ function slugify(text) {
 }
 
 async function scrapeRanking(name, nomeCivil) {
-  const slugs = [...new Set([slugify(name), slugify(nomeCivil)])].filter(s => s && s.length > 5);
+  // Prioriza o nome civil (completo) para gerar o slug, depois tenta o nome parlamentar
+  const slugs = [...new Set([slugify(nomeCivil), slugify(name)])].filter(s => s && s.length > 5);
   
   for (const slug of slugs) {
-    const url = `https://ranking.org.br/perfil/${slug}`;
+    const url = `https://www.politicos.org.br/Parlamentar/${slug}`;
     try {
       const { data } = await axios.get(url, { 
         headers: { 'User-Agent': 'Mozilla/5.0' },
@@ -29,9 +30,11 @@ async function scrapeRanking(name, nomeCivil) {
       });
       const $ = cheerio.load(data);
       
-      const score = $('.perfil-pontuacao-total').first().text().replace(/[^\d]/g, '');
-      if (!score) continue; 
-
+      // Nova lógica de extração baseada na estrutura atual do site
+      const scoreRaw = $('.perfil-pontuacao-total').first().text().trim();
+      if (!scoreRaw || scoreRaw === '-') continue; 
+      
+      const score = scoreRaw.replace(/[^\d]/g, '');
       const rankBrasil = $('.perfil-ranking-posicao').first().text().replace(/[^\d]/g, '');
       const rankEstado = $('.perfil-ranking-posicao').eq(1).text().replace(/[^\d]/g, '');
 
@@ -47,14 +50,15 @@ async function scrapeRanking(name, nomeCivil) {
       });
 
       return {
-        ranking_score: parseFloat(score) / 100 || 0, // Ajuste se o site retornar valor cheio (ex: 715 -> 7.15)
+        ranking_score: parseFloat(score) / 100 || 0,
         ranking_pos_nacional: parseInt(rankBrasil) || 0,
         ranking_pos_estadual: parseInt(rankEstado) || 0,
         ranking_votos: parseFloat(pillars.votacoes) || 0,
         ranking_presenca: parseFloat(pillars.presenca) || 0,
         ranking_economia: parseFloat(pillars.economia) || 0,
         ranking_processos: parseFloat(pillars.anticorrupcao) || 0,
-        ranking_outros: parseFloat(pillars.judiciario) || 0
+        ranking_outros: parseFloat(pillars.judiciario) || 0,
+        ranking_slug: slug
       };
     } catch (e) {
       continue;
