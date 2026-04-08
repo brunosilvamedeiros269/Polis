@@ -335,7 +335,7 @@ export const PoliticianProfile: React.FC<PoliticianProfileProps> = ({
             <button onClick={onBack} className="icon-btn" style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center" }}>
               <span className="material-symbols-outlined" style={{ fontSize: "1.5rem", color: "var(--text-on-surface)" }}>arrow_back</span>
             </button>
-            <h1 className="headline" style={{ fontSize: "1.25rem", margin: 0 }}>Meu Político</h1>
+            <h1 className="headline" style={{ fontSize: "1.25rem", margin: 0 }}>Polis</h1>
           </div>
           
           {session && onShowNotifications && (
