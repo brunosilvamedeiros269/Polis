@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#61002f",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fc5a97",
+                    "surface-dim": "#d9dadb",
+                    "surface-container": "#edeeef",
+                    "surface-container-high": "#e7e8e9",
+                    "on-error": "#ffffff",
+                    "tertiary": "#020215",
+                    "outline": "#767680",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#ffd9e1",
+                    "on-primary-fixed-variant": "#374476",
+                    "on-tertiary-container": "#85829e",
+                    "on-primary-container": "#7683b9",
+                    "primary-fixed-dim": "#b7c4fe",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container-low": "#f3f4f5",
+                    "surface": "#f8f9fa",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-surface-variant": "#45464f",
+                    "surface-tint": "#4f5c8f",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-container": "#1c1b32",
+                    "primary-fixed": "#dce1ff",
+                    "outline-variant": "#c6c5d0",
+                    "secondary": "#b31d5f",
+                    "primary-container": "#09194a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#3f001c",
+                    "primary": "#000215",
+                    "on-secondary-fixed-variant": "#8e0048",
+                    "secondary-fixed-dim": "#ffb1c6",
+                    "tertiary-fixed-dim": "#c7c3e2",
+                    "on-background": "#191c1d",
+                    "inverse-primary": "#b7c4fe",
+                    "tertiary-fixed": "#e3dffe",
+                    "on-primary-fixed": "#071748",
+                    "on-tertiary-fixed-variant": "#46445d",
+                    "on-tertiary-fixed": "#1a1930",
+                    "background": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .progress-ring-circle {
+        transition: stroke-dashoffset 0.35s;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body min-h-screen pb-24">
+<!-- Top AppBar (JSON Derived) -->
+<header class="fixed top-0 w-full bg-[#f8f9fa] dark:bg-slate-900 flex justify-between items-center px-6 h-16 z-50">
+<div class="flex items-center gap-3">
+<button class="text-slate-500 hover:bg-slate-100 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<span class="font-headline font-bold text-lg text-[#09194a] dark:text-slate-100 tracking-tight">Meu Político</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#09194a] dark:text-slate-100">search</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="close up professional portrait of a Brazilian citizen, soft studio lighting, neutral background, high quality photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJMFKGoZUez9gt-Zookz99uauTKUPHvlBqqsKS0oYj-EsXPpBs_wy0T2FQUG29lPJYUysliLByM5Er5-_lk8PDa12yIu7FfqGCe4qsmqkuMbxEeHTT8m4YWAk1CNrKbbAIn6vELBjoX2l8_91sfs017_T_UstqdpSrKhNCEgftlIyU8C-wGSbqTfg8UyLj-LC-Gvg98XNNQNgkYFlUaKmVGTHWj7r0pMEYtrYVC44roTisvrvf7ZLZNPUWiLBrv5__rolXFYhXYFE"/>
+</div>
+</div>
+</header>
+<main class="mt-16 px-4 space-y-6">
+<!-- Politician Profile Header -->
+<section class="pt-6">
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col items-center text-center">
+<div class="relative mb-6">
+<div class="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-primary-container to-secondary">
+<div class="w-full h-full rounded-full overflow-hidden border-4 border-surface-container-lowest">
+<img class="w-full h-full object-cover" data-alt="Professional portrait of a Brazilian politician in formal attire, clean white background, confident expression, high-end editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcurSfXMl9NsmAE8UAsgoug704wa-bKf9_4sVaAZpg1idG1UemEAQeZCt_EJR4C0NPtJ9N88Qjczd6tvfDCh_ykmhLjwXRucO_H056G08NV7GiGWRRJeqA4mVbD_lGvFnQlWqQFNDh1hJOPB341VZ_TU-Gnyi259_IQzphx0WprMgMFqwSwr1eqWYnXrbK7p21XY4qq6IxDCzkGKQG0l9KgVLzElIZg3H07IFSmFw7UU3Yw741S5sp68qSmspj5TUW-n3fQWxxelA"/>
+</div>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary-container text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+                        Ativo
+                    </div>
+</div>
+<h1 class="font-headline text-2xl font-extrabold text-primary tracking-tight">Ricardo Silveira</h1>
+<p class="font-body text-on-surface-variant text-sm mt-1">Partido da Renovação (PR) • Deputado Federal</p>
+<!-- Quick Stats Grid (NLP Widget Style) -->
+<div class="grid grid-cols-3 gap-4 w-full mt-8">
+<div class="flex flex-col items-center p-3 bg-surface-container-low rounded-lg">
+<div class="relative w-12 h-12 flex items-center justify-center mb-2">
+<svg class="w-full h-full">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-secondary progress-ring-circle" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="31.4" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute text-[10px] font-headline font-bold">75%</span>
+</div>
+<span class="text-[10px] font-label text-on-surface-variant uppercase tracking-tighter">Presença</span>
+</div>
+<div class="flex flex-col items-center justify-center p-3 bg-surface-container-low rounded-lg">
+<span class="font-headline text-xl font-bold text-primary-container">42</span>
+<span class="text-[10px] font-label text-on-surface-variant uppercase tracking-tighter">Projetos</span>
+</div>
+<div class="flex flex-col items-center justify-center p-3 bg-surface-container-low rounded-lg">
+<span class="font-headline text-xl font-bold text-primary-container">156</span>
+<span class="text-[10px] font-label text-on-surface-variant uppercase tracking-tighter">Votações</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Expense History Chart Section -->
+<section>
+<div class="bg-surface-container-lowest rounded-xl p-8">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline text-lg font-bold text-primary">Histórico de Gastos</h2>
+<p class="text-xs text-on-surface-variant">Cota para Exercício Parlamentar (CEAP)</p>
+</div>
+<div class="text-right">
+<span class="text-secondary font-headline font-bold text-xl">R$ 18,4k</span>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Média Mensal</p>
+</div>
+</div>
+<!-- Simplified Smooth Line Chart Visualization -->
+<div class="h-40 w-full relative flex items-end justify-between gap-1">
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-t border-outline-variant opacity-20 w-full"></div>
+<div class="border-t border-outline-variant opacity-20 w-full"></div>
+<div class="border-t border-outline-variant opacity-20 w-full"></div>
+</div>
+<!-- Chart Bars/Points (Simulating smooth curve with CSS) -->
+<div class="relative w-full h-32 flex items-end">
+<svg class="w-full h-full overflow-visible" viewbox="0 0 400 150">
+<path d="M0,130 C50,110 100,140 150,80 C200,20 250,50 300,30 C350,10 400,60 400,60" fill="none" stroke="#b31d5f" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<path d="M0,130 C50,110 100,140 150,80 C200,20 250,50 300,30 C350,10 400,60 400,60 L400,150 L0,150 Z" fill="url(#gradient-chart)" opacity="0.1"></path>
+<defs>
+<lineargradient id="gradient-chart" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#b31d5f;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#b31d5f;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<circle cx="150" cy="80" fill="#b31d5f" r="4"></circle>
+<circle cx="300" cy="30" fill="#b31d5f" r="4"></circle>
+</svg>
+</div>
+</div>
+<div class="flex justify-between mt-4">
+<span class="text-[10px] font-bold text-on-surface-variant">JAN</span>
+<span class="text-[10px] font-bold text-on-surface-variant">MAR</span>
+<span class="text-[10px] font-bold text-on-surface-variant">MAI</span>
+<span class="text-[10px] font-bold text-on-surface-variant">JUL</span>
+<span class="text-[10px] font-bold text-on-surface-variant">SET</span>
+</div>
+</div>
+</section>
+<!-- Voting History Section -->
+<section>
+<div class="bg-surface-container-lowest rounded-xl p-8 mb-4">
+<h2 class="font-headline text-lg font-bold text-primary mb-6">Histórico de Votações</h2>
+<div class="space-y-6">
+<!-- Voting Item 1 -->
+<div class="flex gap-4 items-start">
+<div class="mt-1 flex-shrink-0">
+<div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600 text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline text-sm font-bold text-primary-container leading-tight">PL 2630/2020</h3>
+<span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-full">SIM</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Institui a Lei Brasileira de Liberdade, Responsabilidade e Transparência na Internet.</p>
+<span class="text-[10px] text-outline mt-2 block">12 Out 2023</span>
+</div>
+</div>
+<!-- Voting Item 2 -->
+<div class="flex gap-4 items-start">
+<div class="mt-1 flex-shrink-0">
+<div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-red-600 text-lg" style="font-variation-settings: 'FILL' 1;">cancel</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline text-sm font-bold text-primary-container leading-tight">PEC 45/2019</h3>
+<span class="bg-red-50 text-red-700 text-[10px] font-bold px-2 py-1 rounded-full">NÃO</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Altera o Sistema Tributário Nacional (Reforma Tributária).</p>
+<span class="text-[10px] text-outline mt-2 block">05 Set 2023</span>
+</div>
+</div>
+<!-- Voting Item 3 -->
+<div class="flex gap-4 items-start">
+<div class="mt-1 flex-shrink-0">
+<div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600 text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="font-headline text-sm font-bold text-primary-container leading-tight">PL 490/2007</h3>
+<span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-full">SIM</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1">Marco temporal para a demarcação de terras indígenas.</p>
+<span class="text-[10px] text-outline mt-2 block">28 Ago 2023</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-3 rounded-full border border-outline-variant text-primary-container font-headline text-xs font-bold hover:bg-surface-container-low transition-colors">
+                    VER HISTÓRICO COMPLETO
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (JSON Derived) -->
+<nav class="fixed bottom-0 left-0 w-full h-20 z-50 flex justify-around items-center px-4 pb-4 bg-[#ffffff]/70 backdrop-blur-xl shadow-[0px_20px_40px_rgba(13,12,34,0.06)] rounded-t-[32px]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-['Inter'] font-medium text-[11px]">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">rss_feed</span>
+<span class="font-['Inter'] font-medium text-[11px]">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#b31d5f] font-bold hover:opacity-80 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Inter'] font-medium text-[11px]">Métricas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] font-medium text-[11px]">Perfil</span>
+</a>
+</nav>
+</body></html>

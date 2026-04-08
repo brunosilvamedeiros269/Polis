@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meu Político - Dashboard Analítica</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#61002f",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fc5a97",
+                    "surface-dim": "#d9dadb",
+                    "surface-container": "#edeeef",
+                    "surface-container-high": "#e7e8e9",
+                    "on-error": "#ffffff",
+                    "tertiary": "#020215",
+                    "outline": "#767680",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#ffd9e1",
+                    "on-primary-fixed-variant": "#374476",
+                    "on-tertiary-container": "#85829e",
+                    "on-primary-container": "#7683b9",
+                    "primary-fixed-dim": "#b7c4fe",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f8f9fa",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container-low": "#f3f4f5",
+                    "surface": "#f8f9fa",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-surface-variant": "#45464f",
+                    "surface-tint": "#4f5c8f",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-container": "#1c1b32",
+                    "primary-fixed": "#dce1ff",
+                    "outline-variant": "#c6c5d0",
+                    "secondary": "#b31d5f",
+                    "primary-container": "#09194a",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#3f001c",
+                    "primary": "#000215",
+                    "on-secondary-fixed-variant": "#8e0048",
+                    "secondary-fixed-dim": "#ffb1c6",
+                    "tertiary-fixed-dim": "#c7c3e2",
+                    "on-background": "#191c1d",
+                    "inverse-primary": "#b7c4fe",
+                    "tertiary-fixed": "#e3dffe",
+                    "on-primary-fixed": "#071748",
+                    "on-tertiary-fixed-variant": "#46445d",
+                    "on-tertiary-fixed": "#1a1930",
+                    "background": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-[#f8f9fa] flex justify-between items-center w-full px-6 h-16 z-50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+<img alt="User" class="w-full h-full object-cover" data-alt="professional headshot of a person in business attire with a neutral background and clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXoh3XYXanBzkP_KlMRmFMxbDGnBudOoqnQ-yPK-rQAq5gqnSmcN_fA5z28bdDbTQ-CAe0T3YUyS32vzGJJHEMZc0KkGAucZqRAv4FfJvc8yXwfNu0_lrAmFh4hlQ_QFuNwam5r3wWsyvpNIPrgTOEMsads7k6qxMQDNQ7bsHrJprWDR8gMmEC204ssq37XtArQ4A1nPWKK5_edg3TVDfXidEoVEjzV5hLqlioWf0l2U7NuzKurjFG-HxT_RDMV-17AP6cH2kRehs"/>
+</div>
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-lg text-[#09194a] tracking-tight">Meu Político</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#09194a]" data-icon="search">search</span>
+</button>
+</header>
+<main class="pt-20 px-6 space-y-6">
+<!-- Hero: Gasto Total do Mês Card -->
+<section class="relative bg-primary-container rounded-xl p-8 text-white overflow-hidden shadow-[0px_20px_40px_rgba(13,12,34,0.06)]">
+<div class="relative z-10">
+<p class="text-on-primary-container font-label font-medium text-sm mb-1 uppercase tracking-wider">Gasto Total do Mês</p>
+<div class="flex items-end gap-3 mb-4">
+<h2 class="font-headline font-extrabold text-4xl">R$ 42.850</h2>
+<span class="bg-secondary/20 text-secondary-container px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                        +1.2%
+                    </span>
+</div>
+<!-- Sparkline Mockup -->
+<div class="h-16 w-full flex items-end gap-1 opacity-40">
+<div class="bg-white/40 w-full h-[40%] rounded-t-sm"></div>
+<div class="bg-white/40 w-full h-[60%] rounded-t-sm"></div>
+<div class="bg-white/40 w-full h-[30%] rounded-t-sm"></div>
+<div class="bg-white/40 w-full h-[80%] rounded-t-sm"></div>
+<div class="bg-white/40 w-full h-[50%] rounded-t-sm"></div>
+<div class="bg-white/40 w-full h-[90%] rounded-t-sm"></div>
+<div class="bg-white w-full h-[100%] rounded-t-sm"></div>
+</div>
+</div>
+<!-- Decorative Gradient Shape -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-secondary rounded-full blur-[80px] opacity-20"></div>
+</section>
+<!-- Insight Banner -->
+<div class="bg-secondary/5 rounded-full px-6 py-4 flex items-center gap-3 border border-secondary/10">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">insights</span>
+<p class="text-sm font-medium text-on-background">Insight: <span class="text-secondary font-bold">Gasto 10% acima da média</span> do setor</p>
+</div>
+<!-- Evolução de Gastos Widget -->
+<section class="bg-surface-container-lowest rounded-lg p-8 shadow-sm">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline font-bold text-xl text-primary-container">Evolução de Gastos</h3>
+<span class="material-symbols-outlined text-outline-variant">more_horiz</span>
+</div>
+<div class="relative h-48 w-full flex items-end justify-between px-2">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between py-2 pointer-events-none">
+<div class="border-b border-surface-container-highest w-full"></div>
+<div class="border-b border-surface-container-highest w-full"></div>
+<div class="border-b border-surface-container-highest w-full"></div>
+</div>
+<!-- Chart Bars with Gradient Fill Feel -->
+<div class="relative group w-8 bg-surface-container rounded-t-full h-[40%] transition-all hover:bg-primary-container/20"></div>
+<div class="relative group w-8 bg-surface-container rounded-t-full h-[65%] transition-all hover:bg-primary-container/20"></div>
+<div class="relative group w-8 bg-surface-container rounded-t-full h-[55%] transition-all hover:bg-primary-container/20"></div>
+<div class="relative group w-8 bg-surface-container rounded-t-full h-[80%] transition-all hover:bg-primary-container/20"></div>
+<div class="relative group w-8 bg-surface-container rounded-t-full h-[70%] transition-all hover:bg-primary-container/20"></div>
+<div class="relative group w-8 bg-secondary rounded-t-full h-[95%] transition-all">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-primary-container text-white text-[10px] py-1 px-2 rounded font-bold">SET</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-[10px] font-bold text-outline uppercase tracking-widest">
+<span>abr</span><span>mai</span><span>jun</span><span>jul</span><span>ago</span><span>set</span>
+</div>
+</section>
+<!-- Categorias Section -->
+<section class="space-y-4">
+<h3 class="font-headline font-bold text-lg text-primary-container px-2">Categorias</h3>
+<div class="flex flex-wrap gap-2">
+<button class="px-5 py-2.5 rounded-full bg-primary-container text-white font-label font-bold text-sm shadow-md transition-transform active:scale-95">
+                    #Educação
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-secondary text-white font-label font-bold text-sm shadow-md transition-transform active:scale-95">
+                    #Saúde
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label font-bold text-sm transition-transform active:scale-95">
+                    #Segurança
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label font-bold text-sm transition-transform active:scale-95">
+                    #Infra
+                </button>
+</div>
+</section>
+<!-- Bento Grid / Modular Cards -->
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm space-y-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container">account_balance</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-outline-variant uppercase">Emendas</p>
+<p class="font-headline font-extrabold text-xl text-primary-container">12</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-sm space-y-3">
+<div class="w-10 h-10 rounded-xl bg-secondary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">verified</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-outline-variant uppercase">Votos</p>
+<p class="font-headline font-extrabold text-xl text-primary-container">89%</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 z-50 flex justify-around items-center px-4 pb-4 bg-[#ffffff]/70 backdrop-blur-xl rounded-t-[32px] shadow-[0px_20px_40px_rgba(13,12,34,0.06)]">
+<div class="flex flex-col items-center justify-center text-[#b31d5f] font-bold hover:opacity-80 transition-opacity active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Inter'] font-medium text-[11px]">Início</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 hover:opacity-80 transition-opacity active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span>
+<span class="font-['Inter'] font-medium text-[11px]">Feed</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 hover:opacity-80 transition-opacity active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Inter'] font-medium text-[11px]">Métricas</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 hover:opacity-80 transition-opacity active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] font-medium text-[11px]">Perfil</span>
+</div>
+</nav>
+</body></html>
